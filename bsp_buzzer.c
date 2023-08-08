@@ -1,0 +1,16 @@
+#include "bsp_buzzer.h"
+
+void BUZZER_GPIO_Init(void)
+{
+	GPIO_InitTypeDef BUZZER_GPIO_Init;
+
+	BUZZER_GPIO_CLK_ENABLE();
+
+	HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
+
+	BUZZER_GPIO_Init.Pin = BUZZER_Pin;
+	BUZZER_GPIO_Init.Mode = GPIO_MODE_OUTPUT_PP;
+	BUZZER_GPIO_Init.Pull = GPIO_NOPULL;
+	BUZZER_GPIO_Init.Speed = GPIO_SPEED_FREQ_HIGH;
+	HAL_GPIO_Init(BUZZER_GPIO_Port, &BUZZER_GPIO_Init);
+}
